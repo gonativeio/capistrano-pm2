@@ -72,7 +72,7 @@ namespace :pm2 do
       with fetch(:pm2_env_variables) do
         res = capture :pm2, :jlist, :'-s'
         res = res[res.index('[')..]
-        ps = JSON.parse(capture :pm2, :jlist, :'-s')
+        ps = JSON.parse(res)
 
         # find the process with our app name
         ps.each do |child|
